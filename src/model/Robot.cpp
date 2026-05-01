@@ -26,19 +26,27 @@ const std::vector<Point2D>& Robot::getHistory() const {
 }
 
 void Robot::moveUp() {
-    moveTo(x, y - 1);
+    int step = (totalMoves >= 10) ? 2 : 1;
+    moveTo(x, y - step);
+    totalMoves++;
 }
 
 void Robot::moveDown() {
-    moveTo(x, y + 1);
+    int step = (totalMoves >= 10) ? 2 : 1;
+    moveTo(x, y + step);
+    totalMoves++;
 }
 
 void Robot::moveLeft() {
-    moveTo(x - 1, y);
+    int step = (totalMoves >= 10) ? 2 : 1;
+    moveTo(x - step, y);
+    totalMoves++;
 }
 
 void Robot::moveRight() {
-    moveTo(x + 1, y);
+    int step = (totalMoves >= 10) ? 2 : 1;
+    moveTo(x + step, y);
+    totalMoves++;
 }
 
 void Robot::undo() {
@@ -124,28 +132,4 @@ void Robot::recordPosition() {
 
     history.push_back({x, y});
     currentHistoryIndex = static_cast<int>(history.size()) - 1;
-}
-
-void Robot::moveUp() {
-    int step = (totalMoves >= 10) ? 2 : 1;
-    moveTo(x, y - step);
-    totalMoves++;
-}
-
-void Robot::moveDown() {
-    int step = (totalMoves >= 10) ? 2 : 1;
-    moveTo(x, y + step);
-    totalMoves++;
-}
-
-void Robot::moveLeft() {
-    int step = (totalMoves >= 10) ? 2 : 1;
-    moveTo(x - step, y);
-    totalMoves++;
-}
-
-void Robot::moveRight() {
-    int step = (totalMoves >= 10) ? 2 : 1;
-    moveTo(x + step, y);
-    totalMoves++;
 }

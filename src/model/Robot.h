@@ -37,5 +37,6 @@ private:
     int x = 2;
     int y = 2;
     int currentHistoryIndex = 0;
+    int totalMoves = 0;
     std::vector<Point2D> history = {{2, 2}};
 };
